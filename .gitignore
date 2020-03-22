@@ -1,0 +1,16 @@
+node_modules/
+docs/
+.idea/
+.vscode/
+.settings/
+coverage/
+.nyc_output/
+*.iml
+test-report*
+test-integ-report*
+*.tgz
+*.log
+*.rdb
+.project
+.tern-project
+.DS_Store
