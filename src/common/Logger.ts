@@ -3,7 +3,6 @@ import * as Dotenv from 'dotenv'
 import * as Winston from 'winston'
 
 Dotenv.config()
-
 function Logger (): Winston.Logger {
   const logOpions = {
     format: Winston.format.combine(

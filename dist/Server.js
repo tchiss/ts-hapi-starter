@@ -79,7 +79,7 @@ var Server = /** @class */ (function () {
         });
     };
     Server.stop = function () {
-        Logger_1.default.info("Server - Stopping execution");
+        Logger_1.default.warn("Server - Stopping execution");
         return Server._server.stop();
     };
     Server.recycle = function () {

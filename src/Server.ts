@@ -34,7 +34,7 @@ class Server {
   }
 
   public static stop (): Promise<Error | void> {
-    Logger.info(`Server - Stopping execution`)
+    Logger.warn(`Server - Stopping execution`)
     return Server._server.stop()
   }
 
