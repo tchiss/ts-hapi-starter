@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  ts-hapi-starter:
+    container_name: ts-hapi-starter
+    image: ts-hapi-starter:0.0.1
+    build: .
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "2400:2400"
+    networks:
+      - ts-network
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: unless-stopped
+    networks:
+      - ts-network
+    ports:
+      - 80:80
+    depends_on:
+      - ts-hapi-starter
+    links:
+      - ts-hapi-starter
+    volumes:
+      - ./config/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+networks:
+  ts-network:
+    driver: bridge
