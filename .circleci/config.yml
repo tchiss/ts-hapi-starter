@@ -1,12 +1,36 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker:
       - image: circleci/node:12.16.1
+    working_directory: ~/repo
 
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build docker image
+          command: |
+            docker-compose build
+
+  test:
+    docker:
+      - image: circleci/node:12.16.1
     working_directory: ~/repo
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
+      - run: docker-compose up --abort-on-container-exit
 
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test

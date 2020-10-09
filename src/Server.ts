@@ -9,7 +9,6 @@ DotEnv.config({
 
 class Server {
   private static _server: Hapi.Server
-
   public static async start (): Promise<Hapi.Server> {
     try {
       Server._server = new Hapi.Server({
@@ -25,7 +24,7 @@ class Server {
         }
       })
       await Server._server.start()
-      Logger.info(`Server running on http://${process.env.APP_HOST}:${process.env.APP_PORT}`)
+      Logger.info(`Server running on http://${process.env.APP_HOST}:${process.env.APP_PORT} in ${process.env.NODE_ENV} mode`)
     } catch (e) {
       Logger.error('error while starting server', e)
       throw e
