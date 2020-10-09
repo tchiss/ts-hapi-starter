@@ -11,7 +11,7 @@ Typescript &amp;&amp; Hapi app starter to build some APIs
 * Clone the project or download it
 * Run `npm install`
 * Run npm start
-* Visit http://localhost:7009 to view the hello world.
+* Visit http://localhost:3000 to view the hello world.
 * Visit http://localhost:63342/ts-hapi-starter/docs/ to view the model & function documentation.
 * 
 
