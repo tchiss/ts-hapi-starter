@@ -17,8 +17,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build docker image
-          command: |
-            docker-compose build
+          command: npm run build
 
   test:
     docker:
@@ -26,7 +25,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: docker-compose up --abort-on-container-exit
+      - run: npm test
 
 workflows:
   version: 2
